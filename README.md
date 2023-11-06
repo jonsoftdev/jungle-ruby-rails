@@ -4,10 +4,10 @@ A mini e-commerce application built with Rails 6.1 for purposes of teaching Rail
 
 # Final Project
 !["demo screenshot for Logged user"](./app/assets/images/1.png)
-!["demo screenshot for Log in"](./app/assets/images/1.png)
-!["demo screenshot for Sign up"](./app/assets/images/1.png)
-!["demo screenshot for Cart"](./app/assets/images/1.png)
-!["demo screenshot for Pay"](./app/assets/images/1.png)
+!["demo screenshot for Log in"](./app/assets/images/2.png)
+!["demo screenshot for Sign up"](./app/assets/images/3.png)
+!["demo screenshot for Cart"](./app/assets/images/4.png)
+!["demo screenshot for Pay"](./app/assets/images/5.png)
 ## Setup
 
 1. Run `bundle install` to install dependencies
