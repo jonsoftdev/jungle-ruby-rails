@@ -17,6 +17,25 @@ end
 it 'must have matching password and password_confirmation fields' do
   @user.password_confirmation = "1234567"
   expect(@user).to_not be_valid
+
+  it "is not valid without a first name" do
+    user = User.new(first_name: nil)
+    expect(user).to_not be_valid
+    expect(user.errors.full_messages).to include("First name can't be blank")
+  end
+
+  it "is not valid without a last name" do
+    user = User.new(last_name: nil)
+    expect(user).to_not be_valid
+    expect(user.errors.full_messages).to include("Last name can't be blank")
+  end
+
+  it "is not valid without an email" do
+    user = User.new(email: nil)
+    expect(user).to_not be_valid
+    expect(user.errors.full_messages).to include("Email can't be blank")
+  end
+  
 end
 end
 end
