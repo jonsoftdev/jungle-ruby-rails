@@ -40,7 +40,11 @@ it 'must have matching password and password_confirmation fields' do
     expect(user).to_not be_valid
     expect(user.errors.full_messages).to include("Email has already been taken")
     end
-
+    it "is not valid when password is less than 6 characters" do
+      user = User.new(password: "1234")
+      expect(user).to_not be_valid
+      expect(user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+    end
 end
 end
 end
