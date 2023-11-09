@@ -35,7 +35,12 @@ it 'must have matching password and password_confirmation fields' do
     expect(user).to_not be_valid
     expect(user.errors.full_messages).to include("Email can't be blank")
   end
-  
+  it "is not valid when email is not unique" do
+    user = User.new(email: "john@gmail.com")
+    expect(user).to_not be_valid
+    expect(user.errors.full_messages).to include("Email has already been taken")
+    end
+
 end
 end
 end
