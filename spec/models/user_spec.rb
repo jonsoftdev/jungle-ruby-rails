@@ -61,5 +61,15 @@ it 'is valid when email and password match' do
     auth_user = User.authenticate_with_credentials('john@gmail.com', '1234567')
     expect(auth_user).to_not eq(@user)
   end
-  
+
+  it 'is valid when email has spaces before and/or after' do
+    auth_user = User.authenticate_with_credentials('john@gmail.com', '123456')
+    expect(auth_user).to eq(@user)
+  end
+
+  it 'is valid when email is typed in the wrong case' do
+    auth_user = User.authenticate_with_credentials('john@gmail.com', '123456')
+    expect(auth_user).to eq(@user)
+  end
+end
 end
