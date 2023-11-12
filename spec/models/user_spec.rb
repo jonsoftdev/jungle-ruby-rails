@@ -46,5 +46,30 @@ it 'must have matching password and password_confirmation fields' do
       expect(user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
     end
 end
+describe '.authenticate_with_credentials' do
+  
+  before do
+    @user = User.create(first_name:'John', last_name:'Doe', email:'john@gmail.com', password:'123456', password_confirmation:'123456')
+end
+
+it 'is valid when email and password match' do
+  auth_user = User.authenticate_with_credentials('john@gmail.com', '123456')
+  expect(auth_user).to eq(@user)
+  end
+
+  it 'is not valid when email and password do not match' do
+    auth_user = User.authenticate_with_credentials('john@gmail.com', '1234567')
+    expect(auth_user).to_not eq(@user)
+  end
+
+  it 'is valid when email has spaces before and/or after' do
+    auth_user = User.authenticate_with_credentials('john@gmail.com', '123456')
+    expect(auth_user).to eq(@user)
+  end
+
+  it 'is valid when email is typed in the wrong case' do
+    auth_user = User.authenticate_with_credentials('john@gmail.com', '123456')
+    expect(auth_user).to eq(@user)
+  end
 end
 end
